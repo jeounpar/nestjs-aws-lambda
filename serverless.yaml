@@ -1,0 +1,20 @@
+service: aws-lambda-test
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-plugin-warmup
+  - serverless-offline
+
+provider:
+  name: aws
+  region: ap-northeast-2
+  stage: dev
+  runtime: nodejs16.x
+
+functions:
+  main:
+    handler: src/lambda.handler
+    events:
+      - http:
+          method: any
+          path: /
